@@ -5,6 +5,7 @@ const urlsToCache = [
   './',
   './drawicon192.png',
   './drawicon256.png',
+  './drawicon120.png',
   './index.html',
   './draw.js',
 

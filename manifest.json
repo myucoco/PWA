@@ -14,5 +14,9 @@
       "src"           : "./drawicon256.png",
       "sizes"         : "256x256",
       "type"          : "image/png"
+   }, {
+      "src"           : "./drawicon120.png",
+      "sizes"         : "120x120",
+      "type"          : "image/png"
   }]
 }
