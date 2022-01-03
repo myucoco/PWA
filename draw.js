@@ -52,7 +52,7 @@ window.addEventListener('load', () => {
     const clearButton = document.querySelector('#clear-button');
     clearButton.addEventListener('click', clear);
     canvas.addEventListener('mousedown', dragStart);
-    canvas.addEventListener('touchstart', dragStart
+    canvas.addEventListener('touchstart', dragStart);
     canvas.addEventListener('mouseup', dragEnd);
     canvas.addEventListener('mouseout', dragEnd);
     canvas.addEventListener('touchend', dragEnd);
