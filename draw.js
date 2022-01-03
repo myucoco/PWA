@@ -56,10 +56,12 @@ window.addEventListener('load', () => {
     canvas.addEventListener('mouseup', dragEnd);
     canvas.addEventListener('mouseout', dragEnd);
     canvas.addEventListener('touchend', dragEnd);
-    canvas.addEventListener('mousemove'&'touchmove',(event) => {
+    canvas.addEventListener('mousemove', drawLine);
+    canvas.addEventListener('touchmove', drawLine);
+    function drawLine(event) => {
    
       draw(event.layerX, event.layerY);
-    });
+    }
   }
 
   initEventHandler();
