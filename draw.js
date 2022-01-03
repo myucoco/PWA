@@ -55,8 +55,8 @@ window.addEventListener('load', () => {
     canvas.addEventListener('touchstart', dragStart);
     canvas.addEventListener('mouseup', dragEnd);
     canvas.addEventListener('mouseout', dragEnd);
-    canvas.addEventListener('touchout', dragEnd);
-    canvas.addEventListener('mousemove', (event) => {
+    canvas.addEventListener('touchend', dragEnd);
+    canvas.addEventListener('mousemove', 'touchmove',(event) => {
    
       draw(event.layerX, event.layerY);
     });
