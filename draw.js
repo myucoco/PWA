@@ -52,16 +52,17 @@ window.addEventListener('load', () => {
     const clearButton = document.querySelector('#clear-button');
     clearButton.addEventListener('click', clear);
     canvas.addEventListener('mousedown', dragStart);
-    canvas.addEventListener('touchstart', dragStart);
+    canvas.addEventListener('touchstart', dragStart
     canvas.addEventListener('mouseup', dragEnd);
     canvas.addEventListener('mouseout', dragEnd);
     canvas.addEventListener('touchend', dragEnd);
-    canvas.addEventListener('mousemove', drawLine);
-    canvas.addEventListener('touchmove', drawLine);
-    function drawLine(event) => {
+    canvas.addEventListener('mousemove', (event) => {
    
       draw(event.layerX, event.layerY);
-    }
+    });
+    canvas.addEventListener('touchmove',(event) => {
+    draw(event.layerX, event.layerY);
+    });
   }
 
   initEventHandler();
