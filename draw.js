@@ -1,80 +1,51 @@
-window.addEventListener('load', () => {
-  const canvas = document.querySelector('#draw-area');
-  const context = canvas.getContext('2d');
-  const lastPosition = { x: null, y: null };
-  let isDrag = false;
 
-  function draw(x, y) {
-    if(!isDrag) {
-      return;
-    }
- 
-    context.lineCap = 'round'; // 丸みを帯びた線にする
-    context.lineJoin = 'round'; // 丸みを帯びた線にする
-    context.lineWidth = 5; // 線の太さ
-    context.strokeStyle = 
+var drawing = false
+var last_x = null
+var last_y = null
+var canvas = document.getElementById('stage')
+var ctx = canvas.getContext('2d')
+function resize() {
+	canvas.setAttribute('width', window.innerWidth*2)
+	canvas.setAttribute('height', window.innerHeight*2)
+	ctx.font = '30px serif'
+	ctx.fillText('PWAサンプルアプリ', 20, 40)
+	ctx.font = '25px serif'
+	ctx.fillText('マウスやタッチで絵を描きましょう！', 15, 80)
+　　　　　ctx.lineWidth = 5
+	ctx.scale(2, 2)
+}
+resize()
+window.addEventListener('resize', resize)
+window.addEventListener('orientationchange', resize)
+canvas.addEventListener('mousedown', drawStart, false)
+canvas.addEventListener('touchstart', drawStart, false)
+function drawStart(event) {
+	event.preventDefault()
+	drawing = true
+	last_x = event.pageX
+	last_y = event.pageY
+}
+canvas.addEventListener('mousemove', drawLine, false)
+canvas.addEventListener('touchmove', drawLine, false)
+function drawLine(event) {
+	if(!drawing) return
+	if(event.type==='touchmove') event = event.changedTouches[0]
+	ctx.strokeStyle =
 		'rgb('+
 		(Math.floor(Math.random()*255)) + ',' +
 		(Math.floor(Math.random()*255)) + ',' +
 		(Math.floor(Math.random()*255)) + ')'
 	;
-            context.beginPath()
-
-    if (lastPosition.x === null || lastPosition.y === null) {
-         context.moveTo(x, y);
-    } else {
-  
-      context.moveTo(lastPosition.x, lastPosition.y);
-    }
-     context.lineTo(x, y);
-     context.stroke();
-    lastPosition.x = x;
-    lastPosition.y = y;
-  }
-
-   function clear() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-  }
-
-  function dragStart(event) {
-    context.beginPath();
-    isDrag = true;
-  }
-  
-  function dragEnd(event) {
-    context.closePath();
-    isDrag = false;
-    lastPosition.x = null;
-    lastPosition.y = null;
-  }
-
-  function initEventHandler() {
-    const clearButton = document.querySelector('#clear-button');
-    clearButton.addEventListener('click', clear);
-    canvas.addEventListener('mousedown', dragStart);
-    canvas.addEventListener('mouseup', dragEnd);
-    canvas.addEventListener('mouseout', dragEnd);
-    canvas.addEventListener('mousemove', (event) => {
-       draw(event.layerX, event.layerY);
-    });
-
-  }
-
-  initEventHandler();
-});
-
-  function initEventToucher() {
-    const clearButton = document.querySelector('#clear-button');
-    clearButton.addEventListener('click', clear);
-    canvas.addEventListener('touchstart', dragStart);
-    canvas.addEventListener('touchend', dragEnd);
-    canvas.addEventListener('touchmove', (event) => {
-   
-      draw(event.layerX, event.layerY);
-    });
-
-  }
-
-  initEvent initEventToucher();
-});
-
+	ctx.beginPath()
+	ctx.moveTo(last_x, last_y)
+	ctx.lineTo(event.pageX, event.pageY)
+	ctx.stroke()
+	ctx.closePath()
+	last_x = event.pageX
+	last_y = event.pageY
+}
+canvas.addEventListener('mouseup', drawFinish, false)
+canvas.addEventListener('touchend', drawFinish, false)
+function drawFinish() {
+	drawing = false
+}

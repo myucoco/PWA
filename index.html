@@ -5,18 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="manifest" href="./manifest.json">
 <title>PWA Sample お絵かきアプリ</title>
-
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<h1 style="color:blue">＊お絵かきアプリ＊</h1>
-<canvas
-  id="draw-area"
-  width="500px"
-  height="500px"
-  style="border:1px solid #000000;"></canvas>
- <div>
- <button id="clear-button">全削除</button>
- </div>
+//<h1 style="color:blue">＊お絵かきアプリ＊</h1>
+<canvas id="stage"></canvas>
 <script src="./draw.js"></script>
 <script>
 const msg=document.getElementById("msg");
