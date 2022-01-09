@@ -4,16 +4,23 @@ var last_x = null
 var last_y = null
 var canvas = document.getElementById('stage')
 var ctx = canvas.getContext('2d')
-function resize() {
-	canvas.setAttribute('width', window.innerWidth*2)
-	canvas.setAttribute('height', window.innerHeight*2)
+
+function cls(){
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.font = '30px serif'
-	ctx.fillText('PWAサンプルアプリ', 20, 40)
+	ctx.fillText('★PWAサンプルアプリ★', 18, 40)
+}
+function resize() {
+                canvas.setAttribute('width', window.innerWidth)
+                canvas.setAttribute('height',550)
+	ctx.font = '30px serif'
+	ctx.fillText('☆PWAサンプルアプリ☆', 20, 40)
 	ctx.font = '25px serif'
 	ctx.fillText('マウスやタッチで絵を描きましょう！', 15, 80)
 　　　　　ctx.lineWidth = 5
-	ctx.scale(2, 2)
+
 }
+
 resize()
 window.addEventListener('resize', resize)
 window.addEventListener('orientationchange', resize)
@@ -25,6 +32,7 @@ function drawStart(event) {
 	last_x = event.pageX
 	last_y = event.pageY
 }
+
 canvas.addEventListener('mousemove', drawLine, false)
 canvas.addEventListener('touchmove', drawLine, false)
 function drawLine(event) {
@@ -44,8 +52,13 @@ function drawLine(event) {
 	last_x = event.pageX
 	last_y = event.pageY
 }
+
 canvas.addEventListener('mouseup', drawFinish, false)
 canvas.addEventListener('touchend', drawFinish, false)
 function drawFinish() {
 	drawing = false
 }
+
+ 
+
+ 

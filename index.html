@@ -12,6 +12,9 @@
 </head>
 <body>
 <canvas id="stage"></canvas>
+<input type="button" id="btn1" value="全消去" onclick="cls();">
+   
+ 
 <script src="./draw.js"></script>
 <script>
 const msg=document.getElementById("msg");
@@ -27,6 +30,7 @@ if('serviceWorker' in navigator){
 				registration => {registration.unregister();}
 			)
 	 }
+
 </script>
 </body>
 </html>
