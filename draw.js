@@ -7,15 +7,15 @@ var ctx = canvas.getContext('2d')
 
 function cls(){
 ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.font = '30px serif'
+	ctx.font = '25px serif'
 	ctx.fillText('★PWAサンプルアプリ★', 18, 40)
 }
 function resize() {
                 canvas.setAttribute('width', window.innerWidth)
-                canvas.setAttribute('height',400)
-	ctx.font = '30px serif'
-	ctx.fillText('☆PWAサンプルアプリ☆', 20, 40)
+                canvas.setAttribute('height',550)
 	ctx.font = '25px serif'
+	ctx.fillText('☆PWAサンプルアプリ☆', 20, 40)
+	ctx.font = '20px serif'
 	ctx.fillText('マウスやタッチで絵を描きましょう！', 15, 80)
 　　　　　ctx.lineWidth = 5
 
