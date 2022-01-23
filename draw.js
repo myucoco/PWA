@@ -12,7 +12,7 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 function resize() {
                 canvas.setAttribute('width', window.innerWidth)
-                canvas.setAttribute('height',550)
+                canvas.setAttribute('height',500)
 	ctx.font = '25px serif'
 	ctx.fillText('☆PWAサンプルアプリ☆', 20, 40)
 	ctx.font = '20px serif'
